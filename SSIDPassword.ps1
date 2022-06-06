@@ -17,7 +17,7 @@ if ($wifi -match "There is no wireless interface on the system."){
 
 $ListOfSSID = ($wifi | Select-string -pattern "\w*All User Profile.*: (.*)" -allmatches).Matches | ForEach-Object {$_.Groups[1].Value}
 $NumberOfWifi = $ListOfSSID.count
-Write-Warning "[$(Get-Date)] I've found $NumberOfWifi Wi-Fi Connection settings stored in your system $($env:computername) : "
+#Write-Warning "[$(Get-Date)] I've found $NumberOfWifi Wi-Fi Connection settings stored in your system $($env:computername) : "
 foreach ($SSID in $ListOfSSID){
     try {
         $passphrase = ($(netsh.exe wlan show profiles name=`"$SSID`" key=clear) |
