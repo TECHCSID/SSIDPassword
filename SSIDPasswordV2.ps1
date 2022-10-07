@@ -23,4 +23,4 @@ ForEach($row1 in $cmd1)
         }
     }
 }
-$wifi | format-table
+$wifi | format-list
